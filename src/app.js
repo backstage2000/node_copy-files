@@ -7,7 +7,7 @@ function cpFile() {
 
   if (!oldPath || !newPath) {
     // eslint-disable-next-line no-console
-    console.error('Error not path');
+    console.error('wrong');
 
     return;
   }
@@ -15,6 +15,20 @@ function cpFile() {
   if (oldPath === newPath) {
     // eslint-disable-next-line no-console
     console.error('wrong  to copy to the same location');
+
+    return;
+  }
+
+  if (!fs.existsSync(oldPath)) {
+    // eslint-disable-next-line no-console
+    console.error('Source file does not exist');
+
+    return;
+  }
+
+  if (!fs.statSync(oldPath).isFile()) {
+    // eslint-disable-next-line no-console
+    console.error('Source is not a file');
 
     return;
   }
